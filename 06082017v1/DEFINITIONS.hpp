@@ -11,7 +11,7 @@
 #define PAUSE_BACKGROUND_FILEPATH "Resources/res/Main Menu Background.png"
 // Hier wird später der Sounds eingefügt
 #define Game_Sounds_FILEPATH "Resources/res/"
-
+#define POINTS_FILEPATH "Resources/res/Punkte.txt"
 
 
 #define MAIN_MENU_TITLE_FILEPATH "Resources/res/Game Title.png"
@@ -20,7 +20,8 @@
 #define RESUME_BUTTON "Resources/res/Resume Button.png"
 #define HOME_BUTTON "Resources/res/Home Button.png"
 #define RETRY_BUTTON "Resources/res/Retry Button.png"
-#define PLAYER_VS_BUTTON ""
+#define PLAYER_VS_BUTTON "Resources/res/PlayerVS Button.png"
+#define HIGH_SCORE_BUTTON "Resources/res/HighScore Button.png"
 
 
 #define MAIN_MENU_PLAY_BUTTON_OUTER "Resources/res/Play Button Outer.png"
@@ -55,4 +56,5 @@
 
 // Rangliste 
 #define PlAYER_WINS_POINTS 3
+#define PLAYERAI_WINS_POINTS 2
 #define PLAYER_DRAW_POINTS 1

@@ -22,6 +22,7 @@
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameMode2State.cpp" />
     <ClCompile Include="GameOverState.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -36,14 +37,18 @@
   <ItemGroup>
     <ClInclude Include="AI.hpp" />
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="AuswahlState.hpp" />
     <ClInclude Include="DEFINITIONS.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="GameMode2State.hpp" />
     <ClInclude Include="GameOverState.hpp" />
     <ClInclude Include="GameState.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="MainMenuState.hpp" />
     <ClInclude Include="PauseState.hpp" />
     <ClInclude Include="Player.hpp" />
+    <ClInclude Include="PlayerNameState.hpp" />
+    <ClInclude Include="RegelState.hpp" />
     <ClInclude Include="ScoreState.hpp" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />

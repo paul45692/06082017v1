@@ -12,7 +12,7 @@ namespace Sonar {
 		Player(std::string name, int points);
 		~Player() {};
 
-		void lesePoints(std::string filename);
+		void lesePoints();
 		void schreibePoints(int punkte);
 		inline  const std::string &getName() {
 			return this->Name;}

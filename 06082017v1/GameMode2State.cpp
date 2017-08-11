@@ -1,7 +1,8 @@
+
 #pragma once
 
 #include <sstream>
-#include "GameState.hpp"
+#include "GameMode2State.hpp"
 #include "MainMenuState.hpp"
 #include "DEFINITIONS.hpp"
 #include "PauseState.hpp"
@@ -11,12 +12,12 @@
 
 namespace Sonar
 {
-	GameState::GameState(GameDataRef data) : _data(data)
+	GameMode2State::GameMode2State(GameDataRef data) : _data(data)
 	{
 
 	}
 
-	void GameState::Init()
+	void GameMode2State::Init()
 	{
 		gameState = STATE_PLAYING;
 		turn = PLAYER_PIECE;
@@ -36,7 +37,7 @@ namespace Sonar
 
 		_pauseButton.setPosition(this->_data->window.getSize().x - _pauseButton.getLocalBounds().width, _pauseButton.getPosition().y);
 		_gridSprite.setPosition((SCREEN_WIDTH / 2) - (_gridSprite.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (_gridSprite.getGlobalBounds().height / 2));
-	
+
 		InitGridPieces();
 
 		for (int x = 0; x < 3; x++)
@@ -48,7 +49,7 @@ namespace Sonar
 		}
 	}
 
-	void GameState::HandleInput() 
+	void GameMode2State::HandleInput()
 	{
 		sf::Event event;
 
@@ -74,7 +75,7 @@ namespace Sonar
 		}
 	}
 
-	void GameState::Update(float dt)
+	void GameMode2State::Update(float dt)
 	{
 		if (STATE_DRAW == gameState || STATE_LOSE == gameState || STATE_WON == gameState)
 		{
@@ -86,15 +87,15 @@ namespace Sonar
 		}
 	}
 
-	void GameState::Draw(float dt)
+	void GameMode2State::Draw(float dt)
 	{
 		this->_data->window.clear(sf::Color::Red);
 
-		this->_data->window.draw( this->_background );
+		this->_data->window.draw(this->_background);
 
-		this->_data->window.draw( this->_pauseButton );
+		this->_data->window.draw(this->_pauseButton);
 
-		this->_data->window.draw( this->_gridSprite );
+		this->_data->window.draw(this->_gridSprite);
 
 		for (int x = 0; x < 3; x++)
 		{
@@ -107,7 +108,7 @@ namespace Sonar
 		this->_data->window.display();
 	}
 
-	void GameState::InitGridPieces()
+	void GameMode2State::InitGridPieces()
 	{
 		sf::Vector2u tempSpriteSize = this->_data->assets.GetTexture("X Piece").getSize();
 
@@ -122,7 +123,7 @@ namespace Sonar
 		}
 	}
 
-	void GameState::CheckAndPlacePiece()
+	void GameMode2State::CheckAndPlacePiece()
 	{
 		sf::Vector2i touchPoint = this->_data->input.GetMousePosition(this->_data->window);
 		sf::FloatRect gridSize = _gridSprite.getGlobalBounds();
@@ -179,7 +180,7 @@ namespace Sonar
 		}
 	}
 
-	void GameState::CheckHasPlayerWon(int player)
+	void GameMode2State::CheckHasPlayerWon(int player)
 	{
 		Check3PiecesForMatch(0, 0, 1, 0, 2, 0, player);
 		Check3PiecesForMatch(0, 1, 1, 1, 2, 1, player);
@@ -192,6 +193,7 @@ namespace Sonar
 
 		if (STATE_WON != gameState)
 		{
+			// Anpaasung sind erforderlich
 			gameState = STATE_AI_PLAYING;
 
 			ai->PlacePiece(&_gridArray, _gridPieces, &gameState);
@@ -229,13 +231,13 @@ namespace Sonar
 		if (STATE_DRAW == gameState || STATE_LOSE == gameState || STATE_WON == gameState)
 		{
 			// show game over
-			this->_clock.restart( );
+			this->_clock.restart();
 		}
 
 		std::cout << gameState << std::endl;
 	}
 
-	void GameState::Check3PiecesForMatch(int x1, int y1, int x2, int y2, int x3, int y3, int pieceToCheck)
+	void GameMode2State::Check3PiecesForMatch(int x1, int y1, int x2, int y2, int x3, int y3, int pieceToCheck)
 	{
 		if (pieceToCheck == _gridArray[x1][y1] && pieceToCheck == _gridArray[x2][y2] && pieceToCheck == _gridArray[x3][y3])
 		{

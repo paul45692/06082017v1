@@ -27,5 +27,6 @@ namespace Sonar
 		sf::Sprite _playButtonOuter;
 		sf::Sprite _scoreButton;
 		sf::Sprite _title;
+		
 	};
 }

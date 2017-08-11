@@ -10,12 +10,12 @@ namespace Sonar {
 
 
 	ScoreState::ScoreState(GameDataRef data) : _data(data) {
-
+		Init();
 	 }
 	
 
 	void ScoreState::Init(){
-		
+		// Hier muss was geladen werden.
 		this->_data->assets.LoadTexture("Home Button", HOME_BUTTON);
 		this->_homeButton.setTexture(this->_data->assets.GetTexture("Home Button"));
 		this->_homeButton.setPosition((this->_data->window.getSize().x / 2) - (this->_homeButton.getLocalBounds().width / 2), (this->_data->window.getSize().y / 3 * 2) - (this->_homeButton.getLocalBounds().height / 2));

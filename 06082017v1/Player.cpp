@@ -1,7 +1,10 @@
 #pragma once
-
+#include <fstream>
+#include <iostream>
 #include "Player.hpp"
+#include "DEFINITIONS.hpp"
 
+using namespace std;
 namespace Sonar {
 
 	Player::Player() {
@@ -9,22 +12,30 @@ namespace Sonar {
 		this->setPoints(0);
 		this->setGamemode(false);
 	}
-	Player::Player(std::string name, int points) {
+	Player::Player(string name, int points) {
 		this->setName(name);
 		this->setPoints(points);
 		this->setGamemode(false);
 	}
 
 
-	void Player::lesePoints(std::string filename) {
-	// Diese Methode bereitet das Lesen aus einer textdatei vor;
-
+	void Player::lesePoints() {
+		int punkte = 0;
+		ifstream file(POINTS_FILEPATH);
+		file >> punkte;
+		file.close();
+		this->setPoints(punkte);
 	}
 	void Player::schreibePoints(int punkte) {
+
+		fstream f;
+		f.open(POINTS_FILEPATH, ios::out);
 		int neu = this->getPoints();
 		neu += punkte;
 		this->setPoints(neu);
-		// bei Veränderungen schreibt diese methode die Punkte neu.
+		f << neu << endl;
+		f.close();
+		
 	}
 
 }

@@ -20,15 +20,19 @@ namespace Sonar
 		this->_data->assets.LoadTexture("Play Button", MAIN_MENU_PLAY_BUTTON);
 		this->_data->assets.LoadTexture("Play Button Outer", MAIN_MENU_PLAY_BUTTON_OUTER);
 		this->_data->assets.LoadTexture("Game Title", MAIN_MENU_TITLE_FILEPATH);
+	 	this->_data->assets.LoadTexture("PlayerVS Button", PLAYER_VS_BUTTON);
+		this->_data->assets.LoadTexture("High Score Button", HIGH_SCORE_BUTTON);
 
 		this->_background.setTexture(this->_data->assets.GetTexture("Background"));
 		this->_playButton.setTexture(this->_data->assets.GetTexture("Play Button"));
 		this->_playButtonOuter.setTexture(this->_data->assets.GetTexture("Play Button Outer"));
 		this->_title.setTexture(this->_data->assets.GetTexture("Game Title"));
+		
+		this->_scoreButton.setTexture(this->_data->assets.GetTexture("High Score Button"));
 
 		this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_playButton.getGlobalBounds().height / 2));
-		this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_playButtonOuter.getGlobalBounds().height / 2));
-		
+		this->_playButtonOuter.setPosition((SCREEN_WIDTH / 2) - (this->_playButtonOuter.getGlobalBounds().width / 3), (SCREEN_HEIGHT / 2) - (this->_playButtonOuter.getGlobalBounds().height / 2));
+	 	this->_scoreButton.setPosition((this->_data->window.getSize().x / 2) - (this->_scoreButton.getLocalBounds().width / 2), (this->_data->window.getSize().y / 3 * 2) - (this->_scoreButton.getLocalBounds().height / 2));
 		this->_title.setPosition((SCREEN_WIDTH / 2) - (this->_title.getGlobalBounds().width / 2), this->_title.getGlobalBounds().height * 0.1);
 	}
 
@@ -53,12 +57,11 @@ namespace Sonar
 
 			if (this->_data->input.IsSpriteClicked(this->_scoreButton, sf::Mouse::Left, this->_data->window)) {
 			//	this->_data->machine.AddState(StateRef(new ScoreState(_data)), true);
-			}
-			// Andere Play Mode
-			if (this->_data->input.IsSpriteClicked(this->_scoreButton, sf::Mouse::Left, this->_data->window)) {
-				this->_data->once.setGamemode(true);
-			}
+				std::cout << "Nicht verfügbar!" << std::endl;
 
+			}
+			
+		
 		}
 	}
 
@@ -75,7 +78,7 @@ namespace Sonar
 		this->_data->window.draw(this->_playButton);
 		this->_data->window.draw(this->_playButtonOuter);
 		this->_data->window.draw(this->_title);
-
+		this->_data->window.draw(this->_scoreButton);
 		this->_data->window.display();
 	}
 }
